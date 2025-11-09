@@ -1,3 +1,5 @@
+from abc import ABC, abstractmethod
+
 '''
 OPEN CLOSED PRINCIPLE
 
@@ -11,28 +13,32 @@ tipo de exame, uma nova classe seja adicionada, implementando métodos de uma in
 
 '''
 
+class AprovaExame(ABC):
+    @abstractmethod
+    def verifica_condicoes(self):
+        pass
+    
+    @abstractmethod
+    def aprovar_solicitacao_exame(self):
+        pass
 
-class AprovaExame:
+
+class AprovaExameDeSangue(AprovaExame):
+    def verifica_condicoes(self, exame):
+        pass
+
     def aprovar_solicitacao_exame(self, exame):
+        if (self.verifica_condicoes(exame)):
+          print("Exame sanguíneo aprovado")
 
-        if exame_sangue.tipo == "sangue":
-            if aprovador.verifica_condicoes_exame_sangue(exame_sangue):
-                print("Exame sanguíneo aprovado!")
-
-        elif exame_raio_x.tipo == "raio-x":
-            if aprovador.verifica_condicoes_raio_x(exame_raio_x):
-                print("Raio-X aprovado!")
-                pass
-
-    def verifica_condicoes_exame_sangue(self, exame):
-        # implemente as condições específicas do exame de sangue
+class AprovaExameDeRaioX(AprovaExame):
+    def verifica_condicoes(self, exame):
         pass
 
-    def verifica_condicoes_raio_x(self, exame):
-        # implemente as condições específicas do exame de raio-x
-        pass
+    def aprovar_solicitacao_exame(self, exame):
+        if self.verifica_condicoes(exame):
+          print("Raio-X aprovado")
 
-# Exemplo de uso:
 class Exame:
     def __init__(self, tipo):
         self.tipo = tipo
@@ -40,4 +46,8 @@ class Exame:
 exame_sangue = Exame("sangue")
 exame_raio_x = Exame("raio-x")
 
-aprovador = AprovaExame()
+aprovador_sangue = AprovaExameDeSangue()
+aprovador_raio_x = AprovaExameDeRaioX()
+
+aprovador_sangue.aprovar_solicitacao_exame(exame_sangue)
+aprovador_raio_x.aprovar_solicitacao_exame(exame_raio_x)

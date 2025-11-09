@@ -8,31 +8,25 @@ classes com suas devidas responsabilidades.
 
 '''
 
-# Responsabilidade: Comunicação com a API
-class ConnectAPI:
-    def conect_api(self):
+
+class TaskHandler:
+    def conect_api():
         pass
 
-# Responsabilidade: Gerenciamento de Tarefas
-class TaskService:
-    def create_task(self):
+    def create_task():
         pass
 
-    def update_task(self):
+    def update_task():
         pass
 
-    def remove_task(self):
-        pass
-    
-# Responsabilidade: Notificações
-class NotificationService:
-    def send_notification(self):
+    def remove_task():
         pass
 
-# Responsabilidade: Relatórios
-class ReportService:
-    def generate_report(self):
+    def send_notification():
         pass
 
-    def send_report(self):
+    def generate_report():
+        pass
+
+    def send_report():
         pass
